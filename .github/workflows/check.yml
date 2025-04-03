@@ -44,7 +44,7 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@master
 
       - name: Tap Eve
-        run: brew tap Eve-Ai-Labs/eve https://github.com/Eve-Ai-Labs/homebrew-eve.git
+        run: brew tap Eve-Ai-Labs/eve https://github.com/Eve-Ai-Labs/homebrew-eve
 
       - name: Install eve
         run: brew install eve
