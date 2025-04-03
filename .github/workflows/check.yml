@@ -1,0 +1,53 @@
+name: Test Eve Formula on macOS and Linux
+
+on:
+  push:
+    paths:
+      - 'Formula/eve.rb'
+  pull_request:
+    paths:
+      - 'Formula/eve.rb'
+  workflow_dispatch:
+
+jobs:
+  test-macos-arm:
+    name: macOS (ARM)
+    runs-on: macos-14
+    steps:
+      - name: Tap Eve
+        run: brew tap Eve-Ai-Labs/eve https://github.com/Eve-Ai-Labs/homebrew-eve.git
+
+      - name: Install eve
+        run: brew install eve
+
+      - name: Check
+        run: eve --help
+
+  test-macos-x86:
+    name: macOS (x86)
+    runs-on: macos-13
+    steps:
+      - name: Tap Eve
+        run: brew tap Eve-Ai-Labs/eve https://github.com/Eve-Ai-Labs/homebrew-eve.git
+
+      - name: Install eve
+        run: brew install eve
+
+      - name: Check
+        run: eve --help
+
+  test-linux:
+    name: Linux
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Tap Eve
+        run: brew tap Eve-Ai-Labs/eve https://github.com/Eve-Ai-Labs/homebrew-eve.git
+
+      - name: Install eve
+        run: brew install eve
+
+      - name: Check
+        run: eve --help
